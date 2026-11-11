@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>POLO 品类细分与视觉企划报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#14181c;--paper:#f8f6f1;--line:#dcd7cd;--muted:#6d6a63}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+h1,h2,h3,h4{font-weight:700;letter-spacing:-.01em}
+a{color:inherit}
+/* nav */
+.nav{position:sticky;top:0;z-index:60;background:rgba(248,246,241,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:26px;height:56px;overflow-x:auto;white-space:nowrap}
+.nav b{font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin-right:6px}
+.nav a{font-size:13px;color:var(--muted);text-decoration:none;padding:4px 0;border-bottom:1px solid transparent}
+.nav a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+/* hero */
+.hero{padding:96px 0 60px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+.hero h1{font-size:clamp(38px,6vw,74px);line-height:1.06;letter-spacing:-.03em}
+.hero h1 span{display:block;color:#9a948a;font-weight:400;font-size:.44em;letter-spacing:.02em;margin-top:14px}
+.hero p.lead{margin-top:26px;max-width:720px;font-size:17px;color:#3c3a35}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 15px;font-size:13px;color:#3c3a35}
+.chip b{font-variant-numeric:tabular-nums}
+/* section */
+section{padding:76px 0;border-bottom:1px solid var(--line)}
+.shead{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:38px}
+.snum{font-size:12px;letter-spacing:.22em;color:var(--muted);padding-bottom:6px}
+.shead h2{font-size:clamp(26px,3.4vw,40px);line-height:1.2}
+.shead h2 em{font-style:normal;color:#9a948a;font-weight:400;font-size:.62em;margin-left:10px;letter-spacing:.04em}
+.shead p{font-size:14px;color:var(--muted);max-width:520px;margin-left:auto}
+/* matrix */
+.matrix{position:relative;height:460px;background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:8px}
+.matrix .ax{position:absolute;font-size:11px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+.matrix .grid-line{position:absolute;background:#efece4}
+.matrix .dot{position:absolute;transform:translate(-50%,-50%);text-decoration:none}
+.matrix .dot i{display:block;width:12px;height:12px;border-radius:50%;background:var(--ink);margin:0 auto 6px;box-shadow:0 0 0 6px rgba(20,24,28,.06)}
+.matrix .dot span{font-size:12.5px;white-space:nowrap;background:rgba(248,246,241,.9);padding:1px 6px;border-radius:4px}
+.matrix .dot:hover i{background:#b4471f}
+/* overview table */
+.tbl{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px}
+.tbl th,.tbl td{padding:13px 15px;text-align:left;border-bottom:1px solid #eeeae1;vertical-align:top}
+.tbl th{background:#f2efe8;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#4c4a44;font-weight:600}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{font-weight:600;white-space:nowrap}
+.tbl tbody tr:hover{background:#fbfaf6}
+/* category */
+.cat{background:var(--tone)}
+.cat-head{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.cat-no{font-size:11px;letter-spacing:.26em;color:var(--accent);opacity:.85;margin-bottom:10px}
+.cat-head h2{font-size:clamp(30px,4vw,46px);color:var(--accent);line-height:1.15}
+.cat-head h2 small{display:block;font-size:14px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-top:10px;opacity:.6}
+.cat-tag{display:inline-block;margin-top:18px;padding:5px 13px;border-radius:999px;background:var(--accent);color:#fff;font-size:12.5px;letter-spacing:.02em}
+.cat-pos{font-size:15px;color:#3a3833;line-height:1.85}
+.cat-pos b{background:linear-gradient(transparent 62%,rgba(255,255,255,.85) 62%)}
+/* spec */
+.spec{display:grid;grid-template-columns:150px 1fr;gap:0;margin-top:44px;border-top:1px solid rgba(0,0,0,.12)}
+.spec>div{padding:14px 4px;border-bottom:1px solid rgba(0,0,0,.09);font-size:14px}
+.spec>div:nth-child(odd){color:var(--accent);font-weight:600;font-size:12.5px;letter-spacing:.1em;padding-top:17px}
+/* gallery */
+.gal-head{display:flex;align-items:baseline;gap:14px;margin:56px 0 18px}
+.gal-head h3{font-size:17px}
+.gal-head span{font-size:12px;color:var(--muted);letter-spacing:.06em}
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.gal figure{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:9px;overflow:hidden;cursor:zoom-in;transition:transform .25s ease,box-shadow .25s ease}
+.gal figure:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.13)}
+.gal img{display:block;width:100%;aspect-ratio:4/5;object-fit:contain;background:#f3f1ec;padding:6px}
+.gal figcaption{font-size:11.2px;line-height:1.5;padding:7px 8px;color:#55524c;height:46px;overflow:hidden}
+/* three col */
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.card{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:11px;padding:20px}
+.card h4{font-size:13.5px;margin-bottom:9px;color:var(--accent)}
+.card p{font-size:13px;color:#4b4842;line-height:1.7}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.list{list-style:none}
+.list li{position:relative;padding-left:17px;font-size:13.5px;color:#3c3a35;line-height:1.7;margin-bottom:8px}
+.list li:before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.7}
+.mtable{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:10px;overflow:hidden}
+.mtable td{padding:9px 12px;border-bottom:1px solid #f0ede5;vertical-align:top}
+.mtable tr:last-child td{border-bottom:none}
+.mtable td:first-child{width:96px;color:var(--accent);font-weight:600;font-size:12px;letter-spacing:.06em}
+.copybox{margin-top:16px;background:var(--accent);color:#fff;border-radius:11px;padding:22px 24px}
+.copybox .k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.65;margin-bottom:8px}
+.copybox p{font-size:15px;line-height:1.7}
+.copybox p+p{margin-top:10px;opacity:.85;font-size:14px}
+.note{margin-top:16px;font-size:13px;color:#4b4842;background:rgba(255,255,255,.7);border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0}
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(12,14,16,.94);display:none;align-items:center;justify-content:center;z-index:200;padding:40px}
+.lb.on{display:flex}
+.lb img{max-width:88vw;max-height:82vh;object-fit:contain;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lb .cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;color:#cfcac0;font-size:13px}
+.lb .x{position:absolute;top:22px;right:30px;color:#fff;font-size:26px;cursor:pointer;line-height:1}
+/* footer */
+footer{padding:60px 0 80px;font-size:12.5px;color:var(--muted)}
+footer b{display:block;color:var(--ink);font-size:13px;margin-bottom:10px;letter-spacing:.1em}
+footer ol{margin:0 0 22px 18px}
+footer li{margin-bottom:5px}
+@media(max-width:1080px){.gal{grid-template-columns:repeat(4,1fr)}.cat-head{grid-template-columns:1fr;gap:26px}.cols{grid-template-columns:1fr}.duo{grid-template-columns:1fr}}
+@media(max-width:680px){.gal{grid-template-columns:repeat(2,1fr)}.spec{grid-template-columns:1fr}.matrix{height:380px}.wrap{padding:0 18px}}
+</style></head>
+<body>
+<div class="nav"><div class="wrap">
+  <b>POLO Taxonomy</b>
+  <a href="#map">品类地图</a>
+  <a href="#business">01 商务通勤型</a><a href="#performance">02 运动性能型</a><a href="#golf">03 高尔夫型</a><a href="#preppy">04 学院复古型</a><a href="#knit">05 针织老钱型</a><a href="#resort">06 休闲度假型</a><a href="#street">07 街头潮流型</a>
+  <a href="#platform">平台对比</a><a href="#shoot">拍摄手册</a>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Product Taxonomy &amp; Visual Direction · Men's Polo</div>
+  <h1>POLO 品类细分<span>从 SHEIN 与 Amazon 热销款，拆出 7 个可开发的品相类型</span></h1>
+  <p class="lead">本报告以 22 页 POLO 榜单素材（SHEIN BSR / Amazon BSR 商品图）与 Amazon 男装 POLO 各细分类目榜单为样本，结合领型、面料、版型与主图语言的差异，把「POLO」这一大品类拆成 7 个具象、可独立开款的品相类型，并对每一类的版型、领型、面料、细节、主图场景与人模特征做出归纳，供设计、企划与供应商直接使用。</p>
+  <div class="chips">
+    <span class="chip">样本图 <b>211</b> 张 · 精选 <b>84</b> 款</span>
+    <span class="chip">细分类型 <b>7</b> 类</span>
+    <span class="chip">平台 <b>SHEIN / Amazon</b></span>
+    <span class="chip">覆盖 领型 · 面料 · 版型 · 场景 · 人模</span>
+  </div>
+</div></header>
+
+<section id="map"><div class="wrap">
+  <div class="shead"><div class="snum">01</div><h2>品类地图<em>Taxonomy Map</em></h2>
+    <p>横轴是功能属性（左：日常 / 右：运动性能），纵轴是正式程度（上：商务 / 下：休闲）。7 个类型不是并列的名称，而是两两之间的「差异带」——这正是开款时要守住的边界。</p></div>
+  <div class="matrix">
+    <div class="grid-line" style="left:50%;top:0;width:1px;height:100%"></div>
+    <div class="grid-line" style="left:0;top:50%;width:100%;height:1px"></div>
+    <div class="ax" style="left:14px;top:10px">商务 / 正式</div>
+    <div class="ax" style="left:14px;bottom:10px">休闲 / 度假</div>
+    <div class="ax" style="left:10px;top:50%;margin-top:-22px">日常</div>
+    <div class="ax" style="right:14px;top:50%;margin-top:-22px">运动 / 功能</div>
+    <a class="dot" href="#business" style="left:20%;top:20%"><i></i><span>商务通勤型</span></a><a class="dot" href="#preppy" style="left:31%;top:36%"><i></i><span>学院复古型</span></a><a class="dot" href="#knit" style="left:16%;top:48%"><i></i><span>针织老钱型</span></a><a class="dot" href="#golf" style="left:74%;top:24%"><i></i><span>高尔夫型</span></a><a class="dot" href="#performance" style="left:84%;top:66%"><i></i><span>运动性能型</span></a><a class="dot" href="#resort" style="left:33%;top:76%"><i></i><span>休闲度假型</span></a><a class="dot" href="#street" style="left:56%;top:86%"><i></i><span>街头潮流型</span></a>
+  </div>
+  <div style="margin-top:34px;overflow-x:auto">
+  <table class="tbl"><thead><tr><th>No.</th><th>品相类型</th><th>版型基调</th><th>领型</th><th>面料主选</th><th>价格带</th><th>一句话定位</th></tr></thead>
+  <tbody><tr><td>01</td><td>商务通勤型<br><span style="color:#8a867d;font-weight:400">Business Essential</span></td><td>修身至常规直筒</td><td>高密度罗纹翻领 + 内置领衬（interlining），2–3 扣门襟</td><td>精梳棉珠地 single piqué 180–220g、棉涤混纺、interlock 双面布</td><td>SHEIN 约 $8–15；Amazon 约 $15–35（5-pack 摊薄至约 $12/件）</td><td>一件解决 90% 上班场景的安全牌</td></tr><tr><td>02</td><td>运动性能型<br><span style="color:#8a867d;font-weight:400">Performance / Active</span></td><td>Athletic fit 运动修身</td><td>低矮贴合的 stay-flat 罗纹领，2–3 扣</td><td>涤纶 / 锦纶 + 8–20% 氨纶</td><td>$12–30；5-pack 低至约 $8/件</td><td>卖功能参数，不卖设计</td></tr><tr><td>03</td><td>高尔夫型<br><span style="color:#8a867d;font-weight:400">Golf / Club</span></td><td>Classic fit 与 Sport fit 双线</td><td>挺立罗纹领或自布领 + 领衬</td><td>91% 涤 + 9% 氨纶 piqué、performance jersey、interlock 双面</td><td>快时尚 $15–30；专业品牌 $84–126</td><td>唯一把「领子」当作核心卖点的细分</td></tr><tr><td>04</td><td>学院复古型<br><span style="color:#8a867d;font-weight:400">Preppy / Ivy</span></td><td>常规至微宽松</td><td>撞色领（contrast collar）与细双线 tipping 为主，白领黑边 / 藏青配米色最经典</td><td>棉珠地、棉涤、细条纹 jersey、毛圈布</td><td>$10–40</td><td>撞色领 + 条纹，最容易读出的「贵气感」</td></tr><tr><td>05</td><td>针织老钱型<br><span style="color:#8a867d;font-weight:400">Knit / Old Money</span></td><td>合体微松</td><td>自布针织翻领、Johnny 无扣开领、半拉链、V 领开襟</td><td>细针距羊毛 / 羊绒混纺、棉粘混纺、华夫格、绞花 cable、提花 jacquard、竖罗纹</td><td>$25–90（设计师款 $200+）</td><td>增长最快的 Polo 细分，卖肌理不卖功能</td></tr><tr><td>06</td><td>休闲度假型<br><span style="color:#8a867d;font-weight:400">Casual / Resort</span></td><td>宽松落肩、直筒</td><td>开领（open collar）、宽翻领、Johnny 无扣领</td><td>棉麻混纺、花纱、水洗棉、轻薄 jersey、微皱肌理（seersucker）</td><td>$10–45</td><td>靠「松」和「轻」取胜，最吃场景图</td></tr><tr><td>07</td><td>街头潮流型<br><span style="color:#8a867d;font-weight:400">Streetwear / Graphic</span></td><td>Oversize 落肩、宽身宽袖</td><td>罗纹翻领，多为 1 扣</td><td>平纹 jersey、罗纹、重磅棉 220–280g</td><td>$8–25</td><td>SHEIN BSR 的流量池，靠图案与版型抢点击</td></tr></tbody></table></div>
+</div></section>
+
+<section class="cat" id="business" style="--accent:#2f4858;--tone:#e8edf0">
+  <div class="wrap">
+    <div class="cat-head">
+      <div>
+        <div class="cat-no">STYLE 01 / 07</div>
+        <h2>商务通勤型<small>Business Essential</small></h2>
+        <span class="cat-tag">一件解决 90% 上班场景的安全牌</span>
+      </div>
+      <p class="cat-pos">对应 Amazon「Men's Polo Shirts」榜单的绝对主力（Hanes X-Temp、Nautica、Amazon Essentials、Coofandy 长袖线），也是 SHEIN「通勤 / 办公」标签下的稳定款。消费者买的不是设计感，而是「挺、净、耐洗」——领子立得住、颜色不发白、洗完不用熨。</p>
+    </div>
+
+    <div class="spec"><div>版型</div><div>修身至常规直筒；肩线落在肩峰、不落肩；衣长盖过腰带 4–6cm，可塞可不塞；袖口包住二头肌中段</div><div>领型</div><div>高密度罗纹翻领 + 内置领衬（interlining），2–3 扣门襟；以同色为主，1–2mm 极细撞色是升级点</div><div>面料</div><div>精梳棉珠地 single piqué 180–220g、棉涤混纺、interlock 双面布；液氨免烫 + 抗皱整理</div><div>细节</div><div>左胸小 logo 或纯素无袋、门襟暗扣、侧缝短开衩、下摆双针平缝；长袖款收罗纹袖口</div><div>色彩图案</div><div>藏青 / 黑 / 白 / 炭灰 / 燕麦 / 深墨绿，纯色为绝对主流；细条纹、微提花仅作小比例补充</div><div>价格带</div><div>SHEIN 约 $8–15；Amazon 约 $15–35（5-pack 摊薄至约 $12/件）</div><div>代表款</div><div>Hanes X-Temp、Nautica Solid Stretch Piqué、Amazon Essentials Regular-Fit Piqué、Coofandy 长袖针织</div></div>
+
+    <div class="gal-head"><h3>款式示例图</h3><span>12 款 · 来自 SHEIN BSR 与 Amazon 榜单样本，点击可放大</span></div>
+    <div class="gal"><figure data-src="img/business/01.jpg" data-cap="纯白珠地·小logo，白底人模正面"><img loading="lazy" src="img/business/01.jpg" alt="纯白珠地·小logo，白底人模正面"><figcaption>纯白珠地·小logo，白底人模正面</figcaption></figure><figure data-src="img/business/02.jpg" data-cap="白色小logo，灰褐背景商务人模"><img loading="lazy" src="img/business/02.jpg" alt="白色小logo，灰褐背景商务人模"><figcaption>白色小logo，灰褐背景商务人模</figcaption></figure><figure data-src="img/business/03.jpg" data-cap="藏青长袖纯色，白底平铺"><img loading="lazy" src="img/business/03.jpg" alt="藏青长袖纯色，白底平铺"><figcaption>藏青长袖纯色，白底平铺</figcaption></figure><figure data-src="img/business/04.jpg" data-cap="燕麦色长袖，中年男性上身"><img loading="lazy" src="img/business/04.jpg" alt="燕麦色长袖，中年男性上身"><figcaption>燕麦色长袖，中年男性上身</figcaption></figure><figure data-src="img/business/05.jpg" data-cap="中蓝长袖修身，白底人模"><img loading="lazy" src="img/business/05.jpg" alt="中蓝长袖修身，白底人模"><figcaption>中蓝长袖修身，白底人模</figcaption></figure><figure data-src="img/business/06.jpg" data-cap="藏青长袖，胸前挂镜造型"><img loading="lazy" src="img/business/06.jpg" alt="藏青长袖，胸前挂镜造型"><figcaption>藏青长袖，胸前挂镜造型</figcaption></figure><figure data-src="img/business/07.jpg" data-cap="黑色长袖修身，面部裁切构图"><img loading="lazy" src="img/business/07.jpg" alt="黑色长袖修身，面部裁切构图"><figcaption>黑色长袖修身，面部裁切构图</figcaption></figure><figure data-src="img/business/08.jpg" data-cap="米白三扣长袖，罗纹袖口"><img loading="lazy" src="img/business/08.jpg" alt="米白三扣长袖，罗纹袖口"><figcaption>米白三扣长袖，罗纹袖口</figcaption></figure><figure data-src="img/business/09.jpg" data-cap="黑色口袋款，微笑人模正面"><img loading="lazy" src="img/business/09.jpg" alt="黑色口袋款，微笑人模正面"><figcaption>黑色口袋款，微笑人模正面</figcaption></figure><figure data-src="img/business/10.jpg" data-cap="黑色长袖+印花内领，卡其裤"><img loading="lazy" src="img/business/10.jpg" alt="黑色长袖+印花内领，卡其裤"><figcaption>黑色长袖+印花内领，卡其裤</figcaption></figure><figure data-src="img/business/11.jpg" data-cap="黑色内印花领，微笑侧头"><img loading="lazy" src="img/business/11.jpg" alt="黑色内印花领，微笑侧头"><figcaption>黑色内印花领，微笑侧头</figcaption></figure><figure data-src="img/business/12.jpg" data-cap="酒红纯色长袖，白底人模"><img loading="lazy" src="img/business/12.jpg" alt="酒红纯色长袖，白底人模"><figcaption>酒红纯色长袖，白底人模</figcaption></figure></div>
+
+    <div class="gal-head"><h3>主图场景策略</h3><span>Main-image scene</span></div>
+    <div class="cols"><div class="card"><h4>纯白无缝背景 · 3/4 身</h4><p>最稳的转化主图：正面站立、双手插兜或自然下垂，脚部入镜配卡其裤 / 西裤，鞋型清晰</p></div><div class="card"><h4>浅灰 / 米色影棚 · 侧光 45°</h4><p>作为第二张质感图，用侧光压出珠地网眼的凹凸与领口挺度</p></div><div class="card"><h4>多色平铺 / 叠放</h4><p>3–5 色一屏解决颜色决策，是 Amazon 5-pack 与 SHEIN 多色链接的标准做法</p></div></div>
+
+    <div class="duo">
+      <div>
+        <div class="gal-head"><h3>人模特征</h3><span>Model casting</span></div>
+        <table class="mtable"><tr><td>性别年龄</td><td>25–40 岁男性</td></tr><tr><td>体型</td><td>匀称偏精瘦，肩宽腰窄，不刻意强调肌肉</td></tr><tr><td>妆发</td><td>短发 / 背头 / 侧分，剃净或修整短须；无夸张纹身与配饰</td></tr><tr><td>姿态</td><td>正面站立、双手插兜或自然下垂，少数坐姿；克制微笑</td></tr><tr><td>搭配</td><td>卡其 / 深灰西裤、乐福鞋或德比鞋；长袖款可外搭西装</td></tr><tr><td>光线场景</td><td>白 / 浅灰无缝背景，柔光箱正面 + 两侧补光，光比约 1:1.5</td></tr></table>
+      </div>
+      <div>
+        <div class="gal-head"><h3>面料卖点</h3><span>Fabric selling points</span></div>
+        <ul class="list" style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:18px 20px 8px"><li>免烫抗皱：液氨 + 树脂整理，机洗晾干即穿，商务场景第一诉求</li><li>保形领：领衬 + 高密罗纹，洗后不卷边、不塌领</li><li>透气不闷：珠地网眼结构，28–32℃ 通勤不粘背</li><li>色牢度：深色（藏青 / 黑）需 4 级以上，避免洗后发白</li></ul>
+        <div class="copybox">
+          <div class="k">Main image copy</div>
+          <p>免烫挺括 · 通勤一件到位｜领口不塌 · 会议到晚餐</p>
+          <p>Wrinkle-Resistant Piqué · Desk to Dinner | A Collar That Holds Its Shape</p>
+        </div>
+        <div class="note"><b>开发提示 · </b>开发重心在版型与后整理，而不是花型；风险点是撞色包边的缸差、罗纹回弹率，长袖款要控袖长与袖口松量。</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cat" id="performance" style="--accent:#0f6b5c;--tone:#e2f0ec">
+  <div class="wrap">
+    <div class="cat-head">
+      <div>
+        <div class="cat-no">STYLE 02 / 07</div>
+        <h2>运动性能型<small>Performance / Active</small></h2>
+        <span class="cat-tag">卖功能参数，不卖设计</span>
+      </div>
+      <p class="cat-pos">对应 Amazon Best Sellers「Men's Activewear Polos」整榜：ZITY、MAGCOMSEN、Tacvasen、CQR、Under Armour Tech、Columbia Utilizer。标题几乎被 moisture wicking / quick dry / 4-way stretch / UPF 50+ 占满，视觉高度同质化，竞争靠功能参数、检测报告与 pack 价格。</p>
+    </div>
+
+    <div class="spec"><div>版型</div><div>Athletic fit 运动修身；插肩袖或侧片拼接；衣长缩短 2–3cm 便于挥臂；下摆侧开衩 6–10cm</div><div>领型</div><div>低矮贴合的 stay-flat 罗纹领，2–3 扣；部分半拉链、立领、V 领</div><div>面料</div><div>涤纶 / 锦纶 + 8–20% 氨纶；珠地或网眼结构；吸湿速干、抗臭、UPF 40–50+</div><div>细节</div><div>腋下激光透气孔、平锁缝、无感标签、反光条、长袖拇指孔、胸前小 logo</div><div>色彩图案</div><div>黑 / 藏青 / 军绿 / 灰，荧光橙黄作点缀；少量满印迷彩与几何</div><div>价格带</div><div>$12–30；5-pack 低至约 $8/件</div><div>代表款</div><div>Under Armour Tech Polo、ZITY Moisture Wicking、CQR Tactical、Columbia Utilizer</div></div>
+
+    <div class="gal-head"><h3>款式示例图</h3><span>12 款 · 来自 SHEIN BSR 与 Amazon 榜单样本，点击可放大</span></div>
+    <div class="gal"><figure data-src="img/performance/01.jpg" data-cap="黑色竖罗纹速干，纹身人模"><img loading="lazy" src="img/performance/01.jpg" alt="黑色竖罗纹速干，纹身人模"><figcaption>黑色竖罗纹速干，纹身人模</figcaption></figure><figure data-src="img/performance/02.jpg" data-cap="亮黄蜂窝珠地修身，胡须人模"><img loading="lazy" src="img/performance/02.jpg" alt="亮黄蜂窝珠地修身，胡须人模"><figcaption>亮黄蜂窝珠地修身，胡须人模</figcaption></figure><figure data-src="img/performance/03.jpg" data-cap="黑色Under Armour运动版型"><img loading="lazy" src="img/performance/03.jpg" alt="黑色Under Armour运动版型"><figcaption>黑色Under Armour运动版型</figcaption></figure><figure data-src="img/performance/04.jpg" data-cap="黑色珠地，假模平铺"><img loading="lazy" src="img/performance/04.jpg" alt="黑色珠地，假模平铺"><figcaption>黑色珠地，假模平铺</figcaption></figure><figure data-src="img/performance/05.jpg" data-cap="黑色长袖速干，平铺"><img loading="lazy" src="img/performance/05.jpg" alt="黑色长袖速干，平铺"><figcaption>黑色长袖速干，平铺</figcaption></figure><figure data-src="img/performance/06.jpg" data-cap="黑色速干，行走姿态肌肉人模"><img loading="lazy" src="img/performance/06.jpg" alt="黑色速干，行走姿态肌肉人模"><figcaption>黑色速干，行走姿态肌肉人模</figcaption></figure><figure data-src="img/performance/07.jpg" data-cap="橙黑条纹半拉链长袖，平铺"><img loading="lazy" src="img/performance/07.jpg" alt="橙黑条纹半拉链长袖，平铺"><figcaption>橙黑条纹半拉链长袖，平铺</figcaption></figure><figure data-src="img/performance/08.jpg" data-cap="黑色UA Tech，运动上身"><img loading="lazy" src="img/performance/08.jpg" alt="黑色UA Tech，运动上身"><figcaption>黑色UA Tech，运动上身</figcaption></figure><figure data-src="img/performance/09.jpg" data-cap="黑色速干+侧缝开衩拼接"><img loading="lazy" src="img/performance/09.jpg" alt="黑色速干+侧缝开衩拼接"><figcaption>黑色速干+侧缝开衩拼接</figcaption></figure><figure data-src="img/performance/10.jpg" data-cap="黑色MAELREG，印花内领"><img loading="lazy" src="img/performance/10.jpg" alt="黑色MAELREG，印花内领"><figcaption>黑色MAELREG，印花内领</figcaption></figure><figure data-src="img/performance/11.jpg" data-cap="黑色长袖速干，平铺"><img loading="lazy" src="img/performance/11.jpg" alt="黑色长袖速干，平铺"><figcaption>黑色长袖速干，平铺</figcaption></figure><figure data-src="img/performance/12.jpg" data-cap="白色半拉链+黑边撞色"><img loading="lazy" src="img/performance/12.jpg" alt="白色半拉链+黑边撞色"><figcaption>白色半拉链+黑边撞色</figcaption></figure></div>
+
+    <div class="gal-head"><h3>主图场景策略</h3><span>Main-image scene</span></div>
+    <div class="cols"><div class="card"><h4>纯白底 · 假模 / 平铺</h4><p>正面 + 背面 + 侧缝三视图，是功能款的「结构说明书」</p></div><div class="card"><h4>灰底 · 运动人模动态</h4><p>行走、挥拍、抬臂抓拍，衣摆与肩部形成拉扯感，暗示弹性</p></div><div class="card"><h4>面料微距</h4><p>透气孔、平锁缝、领口内侧抗臭标识，与参数文案一一对应</p></div></div>
+
+    <div class="duo">
+      <div>
+        <div class="gal-head"><h3>人模特征</h3><span>Model casting</span></div>
+        <table class="mtable"><tr><td>性别年龄</td><td>20–35 岁</td></tr><tr><td>体型</td><td>肌肉线条清晰、肩背宽厚，体脂低</td></tr><tr><td>肤色</td><td>深肤色 / 美黑模特占比高，强化运动联想</td></tr><tr><td>姿态</td><td>动态：行走中、挥杆、抬臂；多数不看镜头</td></tr><tr><td>搭配</td><td>运动短裤 / 紧身裤、跑鞋、运动手表；不配腰带</td></tr><tr><td>光线场景</td><td>纯白或水泥灰影棚，硬光侧逆光勾勒肌肉与面料轮廓</td></tr></table>
+      </div>
+      <div>
+        <div class="gal-head"><h3>面料卖点</h3><span>Fabric selling points</span></div>
+        <ul class="list" style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:18px 20px 8px"><li>4-way stretch：四面弹，肩背大幅活动不勒</li><li>速干：单向导湿，30 分钟内干燥</li><li>抗臭：银离子 / 抗菌整理，连续穿着不返味</li><li>UPF 50+：户外场景的硬指标，需检测报告背书</li></ul>
+        <div class="copybox">
+          <div class="k">Main image copy</div>
+          <p>一秒排汗 · 四面弹不勒肩｜速干、抗臭、防晒，一件顶三件</p>
+          <p>Sweat-Wicking 4-Way Stretch · Built to Move | Quick-Dry · Anti-Odor · UPF 50+</p>
+        </div>
+        <div class="note"><b>开发提示 · </b>这类款拼面料与检测，不拼设计。开发重点：克重（140–160g 轻薄）、弹性回复率、抗起球；拍摄上必须把「功能」可视化，否则在同质化货架里没有点击理由。</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cat" id="golf" style="--accent:#1f6f43;--tone:#e6f1e9">
+  <div class="wrap">
+    <div class="cat-head">
+      <div>
+        <div class="cat-no">STYLE 03 / 07</div>
+        <h2>高尔夫型<small>Golf / Club</small></h2>
+        <span class="cat-tag">唯一把「领子」当作核心卖点的细分</span>
+      </div>
+      <p class="cat-pos">Amazon 高尔夫细分类与专业品牌（TravisMathew、Bad Birdie、Donald Ross、Straight Down、Mizzen+Main）构成价格天花板；SHEIN 侧用「撞色包边 + 亮色」做平价替代。行业话术高度统一：stay-right / bulletproof collar、UPF50、anti-odor。</p>
+    </div>
+
+    <div class="spec"><div>版型</div><div>Classic fit 与 Sport fit 双线；肩部留活动量，袖长至二头肌中部，下摆平直（可塞可不塞），侧开衩</div><div>领型</div><div>挺立罗纹领或自布领 + 领衬；撞色 tipping（白 / 黑 / 金）是最强识别符号；3 扣；部分立领 / 半拉链</div><div>面料</div><div>91% 涤 + 9% 氨纶 piqué、performance jersey、interlock 双面；UPF50、抗臭、四面弹</div><div>细节</div><div>领口与袖口同色系 tipping、胸前小马 / 球标刺绣、后领品牌胶章、下摆侧开衩；印花款走大面积几何与涂鸦</div><div>色彩图案</div><div>白 / 浅蓝 / 粉 / 亮黄 / 孔雀蓝 + 撞色领；专业品牌大量使用高饱和印花</div><div>价格带</div><div>快时尚 $15–30；专业品牌 $84–126</div><div>代表款</div><div>Bad Birdie Ridge Polo、Donald Ross Piqué、TravisMathew、Straight Down Bulletproof Collar</div></div>
+
+    <div class="gal-head"><h3>款式示例图</h3><span>12 款 · 来自 SHEIN BSR 与 Amazon 榜单样本，点击可放大</span></div>
+    <div class="gal"><figure data-src="img/golf/01.jpg" data-cap="酒红白包边，泳池边人模"><img loading="lazy" src="img/golf/01.jpg" alt="酒红白包边，泳池边人模"><figcaption>酒红白包边，泳池边人模</figcaption></figure><figure data-src="img/golf/02.jpg" data-cap="酒红白滚边，店铺街景"><img loading="lazy" src="img/golf/02.jpg" alt="酒红白滚边，店铺街景"><figcaption>酒红白滚边，店铺街景</figcaption></figure><figure data-src="img/golf/03.jpg" data-cap="白色压花珠地+黑撞色领，户外"><img loading="lazy" src="img/golf/03.jpg" alt="白色压花珠地+黑撞色领，户外"><figcaption>白色压花珠地+黑撞色领，户外</figcaption></figure><figure data-src="img/golf/04.jpg" data-cap="白底灰菱形印花+藏蓝撞色领"><img loading="lazy" src="img/golf/04.jpg" alt="白底灰菱形印花+藏蓝撞色领"><figcaption>白底灰菱形印花+藏蓝撞色领</figcaption></figure><figure data-src="img/golf/05.jpg" data-cap="浅蓝纯色修身，手持咖啡"><img loading="lazy" src="img/golf/05.jpg" alt="浅蓝纯色修身，手持咖啡"><figcaption>浅蓝纯色修身，手持咖啡</figcaption></figure><figure data-src="img/golf/06.jpg" data-cap="酒红白细tipping，白底人模"><img loading="lazy" src="img/golf/06.jpg" alt="酒红白细tipping，白底人模"><figcaption>酒红白细tipping，白底人模</figcaption></figure><figure data-src="img/golf/07.jpg" data-cap="红色三扣，白底正面站姿"><img loading="lazy" src="img/golf/07.jpg" alt="红色三扣，白底正面站姿"><figcaption>红色三扣，白底正面站姿</figcaption></figure><figure data-src="img/golf/08.jpg" data-cap="深灰碎花+绿色撞色领"><img loading="lazy" src="img/golf/08.jpg" alt="深灰碎花+绿色撞色领"><figcaption>深灰碎花+绿色撞色领</figcaption></figure><figure data-src="img/golf/09.jpg" data-cap="孔雀蓝几何提花，白底人模"><img loading="lazy" src="img/golf/09.jpg" alt="孔雀蓝几何提花，白底人模"><figcaption>孔雀蓝几何提花，白底人模</figcaption></figure><figure data-src="img/golf/10.jpg" data-cap="亮黄短袖+墨镜挂领"><img loading="lazy" src="img/golf/10.jpg" alt="亮黄短袖+墨镜挂领"><figcaption>亮黄短袖+墨镜挂领</figcaption></figure><figure data-src="img/golf/11.jpg" data-cap="蓝绿几何提花+白裤，果岭感"><img loading="lazy" src="img/golf/11.jpg" alt="蓝绿几何提花+白裤，果岭感"><figcaption>蓝绿几何提花+白裤，果岭感</figcaption></figure><figure data-src="img/golf/12.jpg" data-cap="黑色高尔夫款，站位姿态"><img loading="lazy" src="img/golf/12.jpg" alt="黑色高尔夫款，站位姿态"><figcaption>黑色高尔夫款，站位姿态</figcaption></figure></div>
+
+    <div class="gal-head"><h3>主图场景策略</h3><span>Main-image scene</span></div>
+    <div class="cols"><div class="card"><h4>果岭 / 球道</h4><p>草地绿 + 天空蓝，自然光侧逆光，人物半身或全身持杆</p></div><div class="card"><h4>会所 / 露台 / 泳池</h4><p>木质或白色栏杆、冰饮道具，强调「下场后直接赴约」</p></div><div class="card"><h4>白底 + 撞色领特写</h4><p>把 tipping 工艺做成第二张主图的核心信息</p></div></div>
+
+    <div class="duo">
+      <div>
+        <div class="gal-head"><h3>人模特征</h3><span>Model casting</span></div>
+        <table class="mtable"><tr><td>性别年龄</td><td>28–45 岁</td></tr><tr><td>体型</td><td>健康匀称、有运动痕迹但不夸张</td></tr><tr><td>肤色</td><td>小麦色 / 美黑，皮肤有光泽</td></tr><tr><td>姿态</td><td>一手插兜或持杆，重心单侧，笑容自信；全身图多配腰带</td></tr><tr><td>搭配</td><td>卡其 / 白色短裤或长裤、白色球鞋或乐福鞋、腕表、墨镜</td></tr><tr><td>光线场景</td><td>户外 10:00–16:00 自然光，浅景深，背景虚化到只剩草地与天空</td></tr></table>
+      </div>
+      <div>
+        <div class="gal-head"><h3>面料卖点</h3><span>Fabric selling points</span></div>
+        <ul class="list" style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:18px 20px 8px"><li>保形领（stay-right collar）：洗 50 次不卷边，是溢价核心</li><li>UPF50：原纱防晒而非涂层，洗后不衰减</li><li>抗臭 + 吸湿：一场 18 洞不闷背</li><li>四面弹：上杆不勒肩背，回弹率 ≥ 90%</li></ul>
+        <div class="copybox">
+          <div class="k">Main image copy</div>
+          <p>洗 50 次不塌领 · 果岭到餐桌｜原纱防晒 UPF50 · 一场球不闷背</p>
+          <p>Stay-Right Collar · Tee to Table | Built-In UPF 50 · 18 Holes, Zero Cling</p>
+        </div>
+        <div class="note"><b>开发提示 · </b>撞色 tipping 的宽度公差（±0.5mm）与领座弧度是工艺门槛，亮色系要控缸差。最高效的 SKU 结构是「一个版型 + 多组领口配色」。</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cat" id="preppy" style="--accent:#7a3b2e;--tone:#f4e9e3">
+  <div class="wrap">
+    <div class="cat-head">
+      <div>
+        <div class="cat-no">STYLE 04 / 07</div>
+        <h2>学院复古型<small>Preppy / Ivy</small></h2>
+        <span class="cat-tag">撞色领 + 条纹，最容易读出的「贵气感」</span>
+      </div>
+      <p class="cat-pos">SHEIN 侧大量「撞色领、条纹、字母刺绣」款；Amazon 侧以 Nautica Dual-Tipped Collar、Vineyard Vines、GAP 条纹款为代表。它站在商务与休闲之间，靠配色与领口工艺制造溢价。</p>
+    </div>
+
+    <div class="spec"><div>版型</div><div>常规至微宽松；轻微落肩；衣长盖臀上 2–3cm，可塞可不塞</div><div>领型</div><div>撞色领（contrast collar）与细双线 tipping 为主，白领黑边 / 藏青配米色最经典；2–3 扣</div><div>面料</div><div>棉珠地、棉涤、细条纹 jersey、毛圈布；克重偏轻 170–200g</div><div>细节</div><div>袖口撞色呼应领口、胸前校队字母或小标刺绣、侧缝条纹对位、门襟同色扣</div><div>色彩图案</div><div>藏青+白、酒红+米、绿白细条纹、粉蓝 pastel；横条纹与学院格</div><div>价格带</div><div>$10–40</div><div>代表款</div><div>Nautica Dual-Tipped、Vineyard Vines Sankaty、GAP Striped Polo、SHEIN 撞色领条纹款</div></div>
+
+    <div class="gal-head"><h3>款式示例图</h3><span>12 款 · 来自 SHEIN BSR 与 Amazon 榜单样本，点击可放大</span></div>
+    <div class="gal"><figure data-src="img/preppy/01.jpg" data-cap="浅蓝细格纹+灰蓝撞色领"><img loading="lazy" src="img/preppy/01.jpg" alt="浅蓝细格纹+灰蓝撞色领"><figcaption>浅蓝细格纹+灰蓝撞色领</figcaption></figure><figure data-src="img/preppy/02.jpg" data-cap="白色金色回纹领口提花"><img loading="lazy" src="img/preppy/02.jpg" alt="白色金色回纹领口提花"><figcaption>白色金色回纹领口提花</figcaption></figure><figure data-src="img/preppy/03.jpg" data-cap="藏青配米色领+FAITH十字绣"><img loading="lazy" src="img/preppy/03.jpg" alt="藏青配米色领+FAITH十字绣"><figcaption>藏青配米色领+FAITH十字绣</figcaption></figure><figure data-src="img/preppy/04.jpg" data-cap="米白细竖条纹+棕领，加州刺绣"><img loading="lazy" src="img/preppy/04.jpg" alt="米白细竖条纹+棕领，加州刺绣"><figcaption>米白细竖条纹+棕领，加州刺绣</figcaption></figure><figure data-src="img/preppy/05.jpg" data-cap="浅蓝白竖条纹Los Angeles，落肩"><img loading="lazy" src="img/preppy/05.jpg" alt="浅蓝白竖条纹Los Angeles，落肩"><figcaption>浅蓝白竖条纹Los Angeles，落肩</figcaption></figure><figure data-src="img/preppy/06.jpg" data-cap="浅蓝白细撞色边，配牛仔"><img loading="lazy" src="img/preppy/06.jpg" alt="浅蓝白细撞色边，配牛仔"><figcaption>浅蓝白细撞色边，配牛仔</figcaption></figure><figure data-src="img/preppy/07.jpg" data-cap="墨绿鳄鱼标短袖"><img loading="lazy" src="img/preppy/07.jpg" alt="墨绿鳄鱼标短袖"><figcaption>墨绿鳄鱼标短袖</figcaption></figure><figure data-src="img/preppy/08.jpg" data-cap="浅蓝长袖胸袋款"><img loading="lazy" src="img/preppy/08.jpg" alt="浅蓝长袖胸袋款"><figcaption>浅蓝长袖胸袋款</figcaption></figure><figure data-src="img/preppy/09.jpg" data-cap="卡其插肩长袖+蓝门襟撞色"><img loading="lazy" src="img/preppy/09.jpg" alt="卡其插肩长袖+蓝门襟撞色"><figcaption>卡其插肩长袖+蓝门襟撞色</figcaption></figure><figure data-src="img/preppy/10.jpg" data-cap="淡紫长袖+花衬衫内搭"><img loading="lazy" src="img/preppy/10.jpg" alt="淡紫长袖+花衬衫内搭"><figcaption>淡紫长袖+花衬衫内搭</figcaption></figure><figure data-src="img/preppy/11.jpg" data-cap="白底细格+深色领，假模"><img loading="lazy" src="img/preppy/11.jpg" alt="白底细格+深色领，假模"><figcaption>白底细格+深色领，假模</figcaption></figure><figure data-src="img/preppy/12.jpg" data-cap="蓝灰+棕橙撞色包边"><img loading="lazy" src="img/preppy/12.jpg" alt="蓝灰+棕橙撞色包边"><figcaption>蓝灰+棕橙撞色包边</figcaption></figure></div>
+
+    <div class="gal-head"><h3>主图场景策略</h3><span>Main-image scene</span></div>
+    <div class="cols"><div class="card"><h4>校园 / 街景</h4><p>砖墙、教学楼、草地；人物靠墙或行走，配棒球帽与帆布鞋</p></div><div class="card"><h4>生活场景平铺</h4><p>木质书桌 + 书本 + 咖啡 + 蜡烛，三件叠放展示配色</p></div><div class="card"><h4>白底平铺 + 领口微距</h4><p>撞色领的工艺图，转化必备</p></div></div>
+
+    <div class="duo">
+      <div>
+        <div class="gal-head"><h3>人模特征</h3><span>Model casting</span></div>
+        <table class="mtable"><tr><td>性别年龄</td><td>18–28 岁</td></tr><tr><td>体型</td><td>清瘦、少年感，肩窄</td></tr><tr><td>肤色</td><td>浅肤色为主</td></tr><tr><td>姿态</td><td>松弛：靠墙、手插兜、手持咖啡或墨镜，视线常偏离镜头</td></tr><tr><td>搭配</td><td>卡其短裤 / 直筒牛仔、帆布鞋或乐福鞋、棒球帽、学院风背包</td></tr><tr><td>光线场景</td><td>白天自然光，暖调，轻微过曝营造胶片感</td></tr></table>
+      </div>
+      <div>
+        <div class="gal-head"><h3>面料卖点</h3><span>Fabric selling points</span></div>
+        <ul class="list" style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:18px 20px 8px"><li>撞色领工艺：领口罗纹单独染色，色差控制是关键</li><li>条纹对位：侧缝与门襟条纹必须对齐，最易露怯的细节</li><li>轻薄透气：校园与度假双场景通吃</li></ul>
+        <div class="copybox">
+          <div class="k">Main image copy</div>
+          <p>常春藤配色 · 撞色领点睛｜条纹对位 · 一件穿出学院感</p>
+          <p>Ivy Tipping · Campus Classic | Stripe-Matched Seams · Preppy Done Right</p>
+        </div>
+        <div class="note"><b>开发提示 · </b>一个撞色领版型可衍生 8–12 个配色；风险在领口色差与条纹对位，需在工艺单上锁定对位基准点。</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cat" id="knit" style="--accent:#6b4f2a;--tone:#f3ece0">
+  <div class="wrap">
+    <div class="cat-head">
+      <div>
+        <div class="cat-no">STYLE 05 / 07</div>
+        <h2>针织老钱型<small>Knit / Old Money</small></h2>
+        <span class="cat-tag">增长最快的 Polo 细分，卖肌理不卖功能</span>
+      </div>
+      <p class="cat-pos">GQ、Vogue 连续两季把它列为「比珠地更有质感的 Polo」；SHEIN 的 knit polo 与 Amazon 的 Coofandy / PJ Paul Jones 针织款同步放量，Percival、Beams、Buck Mason 把它推成「老钱风」符号。核心卖点是肌理与垂坠。</p>
+    </div>
+
+    <div class="spec"><div>版型</div><div>合体微松；肩线自然；衣长偏短（落至自然腰线）；下摆罗纹收口；长袖 / 短袖并行</div><div>领型</div><div>自布针织翻领、Johnny 无扣开领、半拉链、V 领开襟；多无扣或单扣，领子更「软」</div><div>面料</div><div>细针距羊毛 / 羊绒混纺、棉粘混纺、华夫格、绞花 cable、提花 jacquard、竖罗纹</div><div>细节</div><div>罗纹下摆与袖口、无胸袋、暗纹提花、贝壳扣或哑光扣、无衬里、部分做旧水洗</div><div>色彩图案</div><div>米白 / 燕麦 / 驼 / 棕 / 墨绿 / 酒红，低饱和；菱形提花与竖条纹为主</div><div>价格带</div><div>$25–90（设计师款 $200+）</div><div>代表款</div><div>Buck Mason Como、Percival Knitted Polo、Coofandy 针织长袖、PJ Paul Jones 肌理款</div></div>
+
+    <div class="gal-head"><h3>款式示例图</h3><span>12 款 · 来自 SHEIN BSR 与 Amazon 榜单样本，点击可放大</span></div>
+    <div class="gal"><figure data-src="img/knit/01.jpg" data-cap="米白撞藏蓝领绞花针织，灰墙人模"><img loading="lazy" src="img/knit/01.jpg" alt="米白撞藏蓝领绞花针织，灰墙人模"><figcaption>米白撞藏蓝领绞花针织，灰墙人模</figcaption></figure><figure data-src="img/knit/02.jpg" data-cap="米白配深棕领绞花针织"><img loading="lazy" src="img/knit/02.jpg" alt="米白配深棕领绞花针织"><figcaption>米白配深棕领绞花针织</figcaption></figure><figure data-src="img/knit/03.jpg" data-cap="白底藏蓝领绞花针织，沙发场景"><img loading="lazy" src="img/knit/03.jpg" alt="白底藏蓝领绞花针织，沙发场景"><figcaption>白底藏蓝领绞花针织，沙发场景</figcaption></figure><figure data-src="img/knit/04.jpg" data-cap="米白针织+深棕领，室内灰墙"><img loading="lazy" src="img/knit/04.jpg" alt="米白针织+深棕领，室内灰墙"><figcaption>米白针织+深棕领，室内灰墙</figcaption></figure><figure data-src="img/knit/05.jpg" data-cap="燕麦米色绞花针织长袖，三扣"><img loading="lazy" src="img/knit/05.jpg" alt="燕麦米色绞花针织长袖，三扣"><figcaption>燕麦米色绞花针织长袖，三扣</figcaption></figure><figure data-src="img/knit/06.jpg" data-cap="米白V领针织长袖，坐姿"><img loading="lazy" src="img/knit/06.jpg" alt="米白V领针织长袖，坐姿"><figcaption>米白V领针织长袖，坐姿</figcaption></figure><figure data-src="img/knit/07.jpg" data-cap="象牙白绞花针织短袖"><img loading="lazy" src="img/knit/07.jpg" alt="象牙白绞花针织短袖"><figcaption>象牙白绞花针织短袖</figcaption></figure><figure data-src="img/knit/08.jpg" data-cap="墨绿菱形提花针织，手持咖啡"><img loading="lazy" src="img/knit/08.jpg" alt="墨绿菱形提花针织，手持咖啡"><figcaption>墨绿菱形提花针织，手持咖啡</figcaption></figure><figure data-src="img/knit/09.jpg" data-cap="黑色竖条纹针织，项链手表"><img loading="lazy" src="img/knit/09.jpg" alt="黑色竖条纹针织，项链手表"><figcaption>黑色竖条纹针织，项链手表</figcaption></figure><figure data-src="img/knit/10.jpg" data-cap="米白竖罗纹+棕领，纹身人模"><img loading="lazy" src="img/knit/10.jpg" alt="米白竖罗纹+棕领，纹身人模"><figcaption>米白竖罗纹+棕领，纹身人模</figcaption></figure><figure data-src="img/knit/11.jpg" data-cap="深灰暗纹提花短袖"><img loading="lazy" src="img/knit/11.jpg" alt="深灰暗纹提花短袖"><figcaption>深灰暗纹提花短袖</figcaption></figure><figure data-src="img/knit/12.jpg" data-cap="米白罗纹针织长袖，白底"><img loading="lazy" src="img/knit/12.jpg" alt="米白罗纹针织长袖，白底"><figcaption>米白罗纹针织长袖，白底</figcaption></figure></div>
+
+    <div class="gal-head"><h3>主图场景策略</h3><span>Main-image scene</span></div>
+    <div class="cols"><div class="card"><h4>室内暖调</h4><p>木质家具、书墙、咖啡杯，侧光 + 浅景深，突出织物肌理</p></div><div class="card"><h4>白底半身</h4><p>领口与肩部特写，让针织的立体纹路成为主视觉</p></div><div class="card"><h4>坐姿生活图</h4><p>沙发 / 单椅，一手搭扶手，松弛感优先于「卖衣服」</p></div></div>
+
+    <div class="duo">
+      <div>
+        <div class="gal-head"><h3>人模特征</h3><span>Model casting</span></div>
+        <table class="mtable"><tr><td>性别年龄</td><td>25–40 岁</td></tr><tr><td>体型</td><td>中等偏瘦，肩线自然</td></tr><tr><td>妆发</td><td>中长发或微卷、修整胡须，配细金链、腕表、戒指</td></tr><tr><td>姿态</td><td>坐姿、半靠、手插兜；视线可看镜头也可偏离</td></tr><tr><td>搭配</td><td>西裤 / 直筒牛仔、乐福鞋、皮质腰带；秋冬叠穿大衣</td></tr><tr><td>光线场景</td><td>室内窗光 + 暖色补光，低对比度，胶片色调</td></tr></table>
+      </div>
+      <div>
+        <div class="gal-head"><h3>面料卖点</h3><span>Fabric selling points</span></div>
+        <ul class="list" style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:18px 20px 8px"><li>立体肌理：绞花 / 华夫格 / 提花，是区别于珠地的第一眼理由</li><li>垂坠感：粘胶 / 羊毛混纺，上身不贴身、不显肉</li><li>可内搭可外穿：衬衫或 T 恤打底皆可</li><li>需控起球：抗起球 ≥ 3.5 级，并做缩水预处理</li></ul>
+        <div class="copybox">
+          <div class="k">Main image copy</div>
+          <p>复古针织肌理 · 老钱松弛感｜Polo 的体面 + 毛衣的温柔</p>
+          <p>Retro Knit Texture · Quiet Luxury | Polo Polish, Sweater Softness</p>
+        </div>
+        <div class="note"><b>开发提示 · </b>针织开发周期长，重点是纱线、针距（12–14G 细针）与抗起球；版型宁短不长，长了就变「老干部」。</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cat" id="resort" style="--accent:#2a6b83;--tone:#e5f0f4">
+  <div class="wrap">
+    <div class="cat-head">
+      <div>
+        <div class="cat-no">STYLE 06 / 07</div>
+        <h2>休闲度假型<small>Casual / Resort</small></h2>
+        <span class="cat-tag">靠「松」和「轻」取胜，最吃场景图</span>
+      </div>
+      <p class="cat-pos">由 SHEIN 度假线与 Amazon 轻商务休闲款共同构成；多为开领 / Johnny 领、棉麻混纺、宽条纹与粉彩色。这类款单看平铺平平，但海边、游艇、露台场景图转化极高。</p>
+    </div>
+
+    <div class="spec"><div>版型</div><div>宽松落肩、直筒；衣长偏长；袖口宽；下摆侧开衩大</div><div>领型</div><div>开领（open collar）、宽翻领、Johnny 无扣领；领口开口大、领座低</div><div>面料</div><div>棉麻混纺、花纱、水洗棉、轻薄 jersey、微皱肌理（seersucker）</div><div>细节</div><div>无胸袋、宽门襟、撞色领边、贝壳扣、下摆宽松锁边</div><div>色彩图案</div><div>米白 / 浅蓝 / 大地色 / 粉彩；宽横条纹、热带印花、色块拼接</div><div>价格带</div><div>$10–45</div><div>代表款</div><div>SHEIN 度假条纹款、Mizzen+Main Copa Seersucker、GAP 宽松条纹</div></div>
+
+    <div class="gal-head"><h3>款式示例图</h3><span>12 款 · 来自 SHEIN BSR 与 Amazon 榜单样本，点击可放大</span></div>
+    <div class="gal"><figure data-src="img/resort/01.jpg" data-cap="黑/米/条纹三件套，生活场景平铺"><img loading="lazy" src="img/resort/01.jpg" alt="黑/米/条纹三件套，生活场景平铺"><figcaption>黑/米/条纹三件套，生活场景平铺</figcaption></figure><figure data-src="img/resort/02.jpg" data-cap="黑底米白横条纹，手持展示"><img loading="lazy" src="img/resort/02.jpg" alt="黑底米白横条纹，手持展示"><figcaption>黑底米白横条纹，手持展示</figcaption></figure><figure data-src="img/resort/03.jpg" data-cap="纯白平纹，游艇度假场景"><img loading="lazy" src="img/resort/03.jpg" alt="纯白平纹，游艇度假场景"><figcaption>纯白平纹，游艇度假场景</figcaption></figure><figure data-src="img/resort/04.jpg" data-cap="玫粉横条纹+星星贴布，平铺"><img loading="lazy" src="img/resort/04.jpg" alt="玫粉横条纹+星星贴布，平铺"><figcaption>玫粉横条纹+星星贴布，平铺</figcaption></figure><figure data-src="img/resort/05.jpg" data-cap="纯白珠地，室内咖啡杯人模"><img loading="lazy" src="img/resort/05.jpg" alt="纯白珠地，室内咖啡杯人模"><figcaption>纯白珠地，室内咖啡杯人模</figcaption></figure><figure data-src="img/resort/06.jpg" data-cap="米白棕宽条纹长袖落肩，木地板"><img loading="lazy" src="img/resort/06.jpg" alt="米白棕宽条纹长袖落肩，木地板"><figcaption>米白棕宽条纹长袖落肩，木地板</figcaption></figure><figure data-src="img/resort/07.jpg" data-cap="粉黄灰绿pastel条纹长袖"><img loading="lazy" src="img/resort/07.jpg" alt="粉黄灰绿pastel条纹长袖"><figcaption>粉黄灰绿pastel条纹长袖</figcaption></figure><figure data-src="img/resort/08.jpg" data-cap="姜黄纯色，常规直筒"><img loading="lazy" src="img/resort/08.jpg" alt="姜黄纯色，常规直筒"><figcaption>姜黄纯色，常规直筒</figcaption></figure><figure data-src="img/resort/09.jpg" data-cap="浅蓝开领针织+草帽+白裤"><img loading="lazy" src="img/resort/09.jpg" alt="浅蓝开领针织+草帽+白裤"><figcaption>浅蓝开领针织+草帽+白裤</figcaption></figure><figure data-src="img/resort/10.jpg" data-cap="酒红纯色修身短袖"><img loading="lazy" src="img/resort/10.jpg" alt="酒红纯色修身短袖"><figcaption>酒红纯色修身短袖</figcaption></figure><figure data-src="img/resort/11.jpg" data-cap="浅绿棉感，白底人模"><img loading="lazy" src="img/resort/11.jpg" alt="浅绿棉感，白底人模"><figcaption>浅绿棉感，白底人模</figcaption></figure><figure data-src="img/resort/12.jpg" data-cap="亮黄短袖+墨镜，度假感"><img loading="lazy" src="img/resort/12.jpg" alt="亮黄短袖+墨镜，度假感"><figcaption>亮黄短袖+墨镜，度假感</figcaption></figure></div>
+
+    <div class="gal-head"><h3>主图场景策略</h3><span>Main-image scene</span></div>
+    <div class="cols"><div class="card"><h4>海边 / 泳池 / 游艇</h4><p>蓝天 + 海面高光，人物半身或全身，风吹动衣摆</p></div><div class="card"><h4>露台 / 木地板</h4><p>草帽、帆布鞋、咖啡等道具，暖色自然光</p></div><div class="card"><h4>白底平铺</h4><p>宽条纹与撞色领必须完整展示，避免裁切</p></div></div>
+
+    <div class="duo">
+      <div>
+        <div class="gal-head"><h3>人模特征</h3><span>Model casting</span></div>
+        <table class="mtable"><tr><td>性别年龄</td><td>22–35 岁</td></tr><tr><td>体型</td><td>匀称放松，不强调肌肉</td></tr><tr><td>姿态</td><td>极松弛：手插兜、扶帽檐、坐靠栏杆、赤足</td></tr><tr><td>搭配</td><td>浅色短裤 / 亚麻长裤、草帽、墨镜、编织鞋或白鞋</td></tr><tr><td>肤色</td><td>自然肤色，可接受晒痕</td></tr><tr><td>光线场景</td><td>户外强自然光 + 反光板补脸，暖调，天空轻微过曝</td></tr></table>
+      </div>
+      <div>
+        <div class="gal-head"><h3>面料卖点</h3><span>Fabric selling points</span></div>
+        <ul class="list" style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:18px 20px 8px"><li>棉麻透气：吸湿快干、天然微皱，越皱越有味道</li><li>轻薄垂坠：不贴肉，风吹有型</li><li>色织条纹：不靠印花，色牢度与手感更好</li></ul>
+        <div class="copybox">
+          <div class="k">Main image copy</div>
+          <p>棉麻透气 · 度假一件出门｜微皱肌理 · 越穿越松弛</p>
+          <p>Breezy Linen-Blend · Resort Ready | Natural Crinkle · Made to Unwind</p>
+        </div>
+        <div class="note"><b>开发提示 · </b>版型要「宽而不垮」，肩宽与衣长比例是关键；棉麻缩水率必须预缩处理，否则退换率会失控。</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cat" id="street" style="--accent:#1b1b1f;--tone:#eaeaea">
+  <div class="wrap">
+    <div class="cat-head">
+      <div>
+        <div class="cat-no">STYLE 07 / 07</div>
+        <h2>街头潮流型<small>Streetwear / Graphic</small></h2>
+        <span class="cat-tag">SHEIN BSR 的流量池，靠图案与版型抢点击</span>
+      </div>
+      <p class="cat-pos">对应样本中 SHEIN BSR 的主流：印花、贴布、撞色条纹、oversize 落肩。SKU 更新极快、单价低、以「图案新鲜度」驱动复购；Amazon 的 Novelty Polo 榜单同理（节日印花、3D 图案）。</p>
+    </div>
+
+    <div class="spec"><div>版型</div><div>Oversize 落肩、宽身宽袖；衣长偏长；同时保留少量修身短款做对比</div><div>领型</div><div>罗纹翻领，多为 1 扣；撞色包边或同色；部分半拉链 / 立领</div><div>面料</div><div>平纹 jersey、罗纹、重磅棉 220–280g；印花 / 贴布 / 刺绣 / 做旧水洗</div><div>细节</div><div>胸前大字母与图案、贴布徽章、袖口刺绣、下摆毛边或破坏、撞色拼接</div><div>色彩图案</div><div>黑白高对比、酒红、亮黄、玫粉；条纹撞色、骷髅 / 火焰 / 字母 / 涂鸦</div><div>价格带</div><div>$8–25</div><div>代表款</div><div>SHEIN 印花条纹款、Nike Sportswear Club Oversized、ASOS Oversized Knit Stripe</div></div>
+
+    <div class="gal-head"><h3>款式示例图</h3><span>12 款 · 来自 SHEIN BSR 与 Amazon 榜单样本，点击可放大</span></div>
+    <div class="gal"><figure data-src="img/street/01.jpg" data-cap="酒红渐变罗纹，黑撞色领口"><img loading="lazy" src="img/street/01.jpg" alt="酒红渐变罗纹，黑撞色领口"><figcaption>酒红渐变罗纹，黑撞色领口</figcaption></figure><figure data-src="img/street/02.jpg" data-cap="黑底白竖条纹罗纹，纹身人模"><img loading="lazy" src="img/street/02.jpg" alt="黑底白竖条纹罗纹，纹身人模"><figcaption>黑底白竖条纹罗纹，纹身人模</figcaption></figure><figure data-src="img/street/03.jpg" data-cap="米白拼接黑色长袖罗纹"><img loading="lazy" src="img/street/03.jpg" alt="米白拼接黑色长袖罗纹"><figcaption>米白拼接黑色长袖罗纹</figcaption></figure><figure data-src="img/street/04.jpg" data-cap="棕黑米方块拼接，城市街头"><img loading="lazy" src="img/street/04.jpg" alt="棕黑米方块拼接，城市街头"><figcaption>棕黑米方块拼接，城市街头</figcaption></figure><figure data-src="img/street/05.jpg" data-cap="黑色骷髅花卉印花，白底平铺"><img loading="lazy" src="img/street/05.jpg" alt="黑色骷髅花卉印花，白底平铺"><figcaption>黑色骷髅花卉印花，白底平铺</figcaption></figure><figure data-src="img/street/06.jpg" data-cap="棕米宽横条纹落肩+棒球帽"><img loading="lazy" src="img/street/06.jpg" alt="棕米宽横条纹落肩+棒球帽"><figcaption>棕米宽横条纹落肩+棒球帽</figcaption></figure><figure data-src="img/street/07.jpg" data-cap="黑配白领，手写体印花"><img loading="lazy" src="img/street/07.jpg" alt="黑配白领，手写体印花"><figcaption>黑配白领，手写体印花</figcaption></figure><figure data-src="img/street/08.jpg" data-cap="黑白拼色罗纹，楼梯场景"><img loading="lazy" src="img/street/08.jpg" alt="黑白拼色罗纹，楼梯场景"><figcaption>黑白拼色罗纹，楼梯场景</figcaption></figure><figure data-src="img/street/09.jpg" data-cap="红金条纹New Money骷髅印花"><img loading="lazy" src="img/street/09.jpg" alt="红金条纹New Money骷髅印花"><figcaption>红金条纹New Money骷髅印花</figcaption></figure><figure data-src="img/street/10.jpg" data-cap="黄黑条纹+迷彩88贴布，oversize"><img loading="lazy" src="img/street/10.jpg" alt="黄黑条纹+迷彩88贴布，oversize"><figcaption>黄黑条纹+迷彩88贴布，oversize</figcaption></figure><figure data-src="img/street/11.jpg" data-cap="白色泼墨印花，白底平铺"><img loading="lazy" src="img/street/11.jpg" alt="白色泼墨印花，白底平铺"><figcaption>白色泼墨印花，白底平铺</figcaption></figure><figure data-src="img/street/12.jpg" data-cap="红绿雪花节日印花"><img loading="lazy" src="img/street/12.jpg" alt="红绿雪花节日印花"><figcaption>红绿雪花节日印花</figcaption></figure></div>
+
+    <div class="gal-head"><h3>主图场景策略</h3><span>Main-image scene</span></div>
+    <div class="cols"><div class="card"><h4>城市街景 / 水泥墙 / 工业室内</h4><p>冷调、高对比，背景有卷帘门、涂鸦、楼梯</p></div><div class="card"><h4>半侧身人模 · 手插兜持墨镜</h4><p>姿态比衣服更重要，眼神冷峻</p></div><div class="card"><h4>白底平铺 + 图案微距</h4><p>图案是唯一卖点，必须给全图与局部</p></div></div>
+
+    <div class="duo">
+      <div>
+        <div class="gal-head"><h3>人模特征</h3><span>Model casting</span></div>
+        <table class="mtable"><tr><td>性别年龄</td><td>18–28 岁</td></tr><tr><td>体型</td><td>瘦高或健壮，肩宽</td></tr><tr><td>妆造</td><td>纹身（手臂 / 颈部）、耳饰、链饰、墨镜；发型凌乱或寸头</td></tr><tr><td>姿态</td><td>靠墙、抬头、半侧身、手插兜；表情冷峻不笑</td></tr><tr><td>搭配</td><td>阔腿牛仔 / 工装裤、厚底运动鞋、棒球帽</td></tr><tr><td>光线场景</td><td>阴天自然光或硬光闪光直打，高对比、低饱和</td></tr></table>
+      </div>
+      <div>
+        <div class="gal-head"><h3>面料卖点</h3><span>Fabric selling points</span></div>
+        <ul class="list" style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:18px 20px 8px"><li>重磅手感：220g 以上棉，站立有型</li><li>图案工艺：胶印 / 发泡印 / 贴布绣，做旧水洗提升溢价</li><li>落肩版型：肩线外移 4–8cm，是「街头感」的核心</li></ul>
+        <div class="copybox">
+          <div class="k">Main image copy</div>
+          <p>重磅落肩 · 街头大图案｜一件有态度的 Polo</p>
+          <p>Heavyweight Drop-Shoulder · Street Graphic | Attitude, Printed.</p>
+        </div>
+        <div class="note"><b>开发提示 · </b>图案版权是红线（骷髅、品牌字样、球队标识），需原创或授权；印花位置与肩缝关系要固定，否则大货走形。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="platform"><div class="wrap">
+  <div class="shead"><div class="snum">08</div><h2>双平台对照<em>SHEIN vs Amazon</em></h2>
+    <p>同一件 POLO，在两个平台的「款式结构」与「视觉语言」几乎相反。做企划时先定平台，再定款。</p></div>
+  <div style="overflow-x:auto">
+  <table class="tbl"><thead><tr><th>维度</th><th>SHEIN（S BSR 样本）</th><th>Amazon（A BSR 样本）</th></tr></thead><tbody>
+    <tr><td>主力细分</td><td>街头潮流、学院撞色、针织复古、度假条纹</td><td>商务纯色、运动速干、高尔夫、长袖针织</td></tr>
+    <tr><td>价格带</td><td>$7–18，3 / 5 件套常见</td><td>$15–35，5-pack 摊薄至 $12</td></tr>
+    <tr><td>SKU 结构</td><td>一个版型铺 8–15 个配色或图案，快反补款</td><td>一个 listing 多色多码，靠评论与排名累积</td></tr>
+    <tr><td>视觉语言</td><td>人模场景化：街头、室内、泳池；强氛围、强造型</td><td>白底平铺 + 假模 + 局部微距；信息优先、造型最少</td></tr>
+    <tr><td>文案关键词</td><td>oversized、contrast collar、retro、graphic、old money</td><td>moisture wicking、UPF 50+、4-way stretch、wrinkle-free</td></tr>
+    <tr><td>决策驱动</td><td>图案新鲜度、价格、搭配感</td><td>功能参数、评论数、尺码齐全度</td></tr>
+    <tr><td>拍摄成本</td><td>高（外景 + 模特 + 造型）</td><td>低（影棚平铺可批量出图）</td></tr>
+    <tr><td>对开发的启示</td><td>图案与配色速度 &gt; 工艺深度；需备大量原创花稿</td><td>面料与检测报告 &gt; 设计；需锁定克重与功能参数</td></tr>
+  </tbody></table></div>
+  <div class="note" style="margin-top:20px">榜单观察：Amazon「Men's Activewear Polos」前 50 名的标题里，几乎全部出现 moisture wicking / quick dry / performance 等功能词，纯色占比极高；SHEIN 侧则以条纹、撞色领、字母印花与 oversize 为主，同一版型多色上架。两类货架的「第一眼竞争力」完全不同——前者是参数，后者是图案。</div>
+</div></section>
+
+<section id="shoot"><div class="wrap">
+  <div class="shead"><div class="snum">09</div><h2>拍摄执行手册<em>Shooting Playbook</em></h2>
+    <p>无论哪一类，主图都建议固定为 5 个图位，只替换场景与人模风格，保证不同品相之间可对比、可复用。</p></div>
+  <div style="overflow-x:auto">
+  <table class="tbl"><thead><tr><th>图位</th><th>内容</th><th>硬性要求</th></tr></thead><tbody>
+    <tr><td>主图 1</td><td>白底正面（平铺 / 假模 / 人模三选一）</td><td>领口完整、无阴影、衣身左右对称、下摆水平</td></tr>
+    <tr><td>主图 2</td><td>领口工艺微距</td><td>拍到 tipping 宽度、撞色包边、罗纹密度，占画面 60% 以上</td></tr>
+    <tr><td>主图 3</td><td>面料微距</td><td>珠地网眼 / 针织提花 / 华夫格纹理清晰，配克重与成分文案</td></tr>
+    <tr><td>主图 4</td><td>场景人模</td><td>与品类匹配：果岭（高尔夫）、街头（潮流）、室内暖光（针织）、海边（度假）</td></tr>
+    <tr><td>主图 5</td><td>背面 / 结构细节</td><td>后领标、侧开衩、下摆工艺、袖口结构</td></tr>
+  </tbody></table></div>
+
+  <div class="gal-head"><h3>七类品相 · 场景与人模速查</h3><span>Scene &amp; model at a glance</span></div>
+  <div style="overflow-x:auto">
+  <table class="tbl"><thead><tr><th>类型</th><th>主图场景</th><th>光线</th><th>人模关键词</th><th>姿态</th></tr></thead><tbody>
+    <tr><td>商务通勤</td><td>白 / 浅灰无缝影棚</td><td>柔光箱正面，低对比</td><td>25–40 岁 · 精瘦 · 短发 · 无纹身</td><td>正面站立、双手插兜</td></tr>
+    <tr><td>运动性能</td><td>水泥灰影棚 / 健身房</td><td>硬光侧逆光</td><td>20–35 岁 · 肌肉线条 · 深肤色</td><td>动态行走、抬臂</td></tr>
+    <tr><td>高尔夫</td><td>果岭 / 球道 / 会所露台</td><td>户外自然光 + 浅景深</td><td>28–45 岁 · 小麦色 · 健康匀称</td><td>持杆、单侧重心</td></tr>
+    <tr><td>学院复古</td><td>校园砖墙 / 木质书桌 / 草地</td><td>白天自然光，暖调</td><td>18–28 岁 · 清瘦 · 少年感</td><td>靠墙、手持咖啡</td></tr>
+    <tr><td>针织老钱</td><td>室内书房 / 沙发 / 木地板</td><td>窗光侧光，低对比</td><td>25–40 岁 · 中长发 · 胡须 · 金链表</td><td>坐姿、半靠</td></tr>
+    <tr><td>休闲度假</td><td>海边 / 泳池 / 露台</td><td>强自然光 + 反光板</td><td>22–35 岁 · 放松体态</td><td>扶帽檐、坐靠栏杆</td></tr>
+    <tr><td>街头潮流</td><td>城市街景 / 水泥墙 / 工业室内</td><td>阴天或闪光直打，高对比</td><td>18–28 岁 · 纹身 · 链饰 · 墨镜</td><td>半侧身、抬头、冷峻</td></tr>
+  </tbody></table></div>
+</div></section>
+
+<section id="action"><div class="wrap">
+  <div class="shead"><div class="snum">10</div><h2>结论与开款建议<em>Takeaways</em></h2>
+    <p>七个类型里，真正值得优先投入的不是「最容易做」的，而是「类型边界最清晰」的。</p></div>
+  <div class="cols">
+    <div class="card"><h4>01 先做「商务 + 高尔夫」双底盘</h4><p>纯色珠地与撞色领高尔夫共用一个版型，只换领口配色、面料功能与主图语言，是投入产出比最高的组合：一个版，两个货架，两种客群。</p></div>
+    <div class="card"><h4>02 针织是增量，但要接受长周期</h4><p>针织 Polo 的溢价来自肌理与垂坠，开发要提前 45–60 天锁纱线与针距，并把抗起球、缩水写进验收标准，否则退货率会吃掉溢价。</p></div>
+    <div class="card"><h4>03 街头款是流量，不是利润</h4><p>图案驱动复购、生命周期短。建议用「基础版型 + 每月新花稿」的方式滚动，图案必须原创，避免骷髅、球队标识与品牌字样的版权风险。</p></div>
+    <div class="card"><h4>04 学院与度假共用「撞色领」工艺</h4><p>两者都需要撞色领罗纹与条纹对位，可共用一条工艺线；区别只在配色明度与场景图，开发上可合并打样。</p></div>
+    <div class="card"><h4>05 运动款的竞争在检测报告</h4><p>速干、UPF、抗臭都是可量化指标。没有报告就只能拼价格，有报告才能进企业采购与户外渠道，单价能抬 30% 以上。</p></div>
+    <div class="card"><h4>06 主图决定品类认知</h4><p>同一个版型，白底图会被读成「基础款」，场景图会被读成「风格款」。上架前先确定这张链接要归属哪一类，再决定拍摄方案。</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <b>样本与来源</b>
+  <ol>
+    <li>用户提供的 POLO 榜单素材（22 页，含 S BSR / A BSR 商品图 116 张）</li>
+    <li>Amazon Best Sellers：Men's Polo Shirts、Men's Activewear Polos、Men's Novelty Polo Shirts、New Releases（商品图 95 张，用于扩充非 PPT 款式）</li>
+    <li>Golf 细分参考：Bad Birdie、Donald Ross、TravisMathew、Straight Down、Mizzen+Main 官方商品与产品说明</li>
+    <li>领型与面料工艺参考：Gentleman's Gazette Polo Guide、Mekong Garment 领型分类、Qiandao / Fuway / Velocity Wear 关于 piqué / jersey / interlock 的工艺说明</li>
+    <li>风格与搭配参考：GQ、Vogue、Ralph Lauren、J.Crew、Jos. Bank、Hockerty 等公开内容</li>
+  </ol>
+  <b>说明</b>
+  <p>页面内所有款式图均为上述平台公开商品图的整理与分类，仅用于品类研究与设计参考；价格带为公开页面价格区间，随促销波动。分类判定依据「版型 + 领型 + 面料 + 主图语言」四项，同一款若跨两类，按其主要销售场景归入其中一类。</p>
+</div></footer>
+
+<div class="lb" id="lb"><span class="x" onclick="closeLB()">×</span><img id="lbimg" alt=""><div class="cap" id="lbcap"></div></div>
+<script>
+document.querySelectorAll('.gal figure').forEach(function(f){
+  f.addEventListener('click',function(){
+    document.getElementById('lbimg').src=f.dataset.src;
+    document.getElementById('lbcap').textContent=f.dataset.cap;
+    document.getElementById('lb').classList.add('on');
+  });
+});
+function closeLB(){document.getElementById('lb').classList.remove('on')}
+document.getElementById('lb').addEventListener('click',function(e){if(e.target.id!=='lbimg')closeLB()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLB()});
+</script>
+</body></html>
